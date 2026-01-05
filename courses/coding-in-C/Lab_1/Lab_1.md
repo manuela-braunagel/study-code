@@ -111,3 +111,53 @@ You can also use Codesspaces for these exercises starting with point 3.
 9. Navigate to your repository on github.com and create a Pull Request.
 10. Check out the pull requests and the changes you pushed to GitHub before merging them.
 11. Pull the merged changes from the remote repository to your local main branch.
+
+## Section IX: Hello World!
+
+Now, let's put everything of the above sections together and create your first running C-Program.
+Note: The steps below can be performed on your local machine (after following section II) or using GitHub Codespaces (after following section VIII).
+However, in the best case you tried both environments to build the program and run it.
+
+1. If not yet done, clone the forked repository [study-code](https://github.com/christian-braunagel/study-code).
+   * Note I: If you use a local machine, make sure you configured SSH for your GitHub account.
+   * Note II: If you use GitHub codespaces, cloning is not neccessary because it is done automatically.
+2. Create a new branch with a name of your choice.
+3. Use the terminal and navigate into /courses/coding-in-C/Lab_1/ and create a new folder called "mySolution".
+   * Note I: If you use a local machine, use the Git Bash to perform these and following steps.
+4. Navigate into "mySolution" and open VSCode with ``` code . ```
+5. Create a new file called "helloWorld.c" and write a short Hello World C-program.
+6. Now it is time to build! We will try out several ways to do that.
+
+### Using the terminal to build and run
+1. Either open a terminal (if not yet open) within VSCode (menu "Terminal" > "New Terminal") or switch back to the Git Bash terminal you used in the previous steps.
+   * Note I: If you use a local machine and want to use a terminal within VSCode, make sure that the terminal is also a Git Bash. You can verify and change this on the right upper corner of the terminal view in VSCode.
+   * Note II: If you use GitHub codespaces, you keep using the VSCode terminal from the start.
+2. Enter the following command to build the program:
+``` bash
+gcc helloWorld.c -o helloWorld.o
+```
+3. Explanation of the command:
+   * gcc: The command to execute the compiler
+   * helloWorld.c: The c-file you want to compile
+   * -o <name>: Define the name of the created output file (otherwise it will be named a.exe or something similar)
+4. If the command runs successfully, it creates an executable file with the chosen name stored in your folder.
+5. To run the program, you write the following command in your terminal:
+``` bash
+./helloWorld
+```
+6. It should print out the words "Hello World" (or whatever you coded into your c-file) on your terminal.
+
+### Using VSCode to build and run
+1. Open your file "helloWorld.c" in VSCode and click on the icon on the top right corner called "Debug or Run".
+![Image of the icon in VSCode](/Lab_1/runCFileInVSCode.png)
+2. Select the option "Run C/C++ file".
+   * Note: A drop down window on the top of VSCode might occur, asking to select the debug configuration. If so, select the C/C++: gcc.exe
+   ![Image of compiler selection drop down menu in VSCode](/Lab_1/selectCompiler.png)
+3. Give it some seconds.
+4. If everything works, it should print out the words "Hello World" (or whatever you coded into your c-file) on your terminal.
+5. In case you get some errors of unknown paths/compiler usage or if there are some red, curly lines below ``` #include <stdio.h> ```, you might need to set the correct compiler configuration.
+   * In VSCode, press Control+Shift+P and type C/C++: Edit Configurations (UI) and hit enter.
+   * Under "compiler path" verify or change the path to the correct location of gcc. On Windows most likely: C:/msys64/ucrt64/bin/gcc.exe
+   * Under "IntelliSense mode", select the fitting platform-compiler-architecture. On Windows that would be: Windows-gcc-x64
+   * Then try again to build it.
+   * If it still does not work, check if gcc --version is available in the terminal. If not, you might need to add gcc to your path variable or install it first (see section II).
